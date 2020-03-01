@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-class Base {
+export default class Base {
   initPlayList () {
     this.play_list.set('r2', {
       bonus: 6,
@@ -179,5 +179,37 @@ class Base {
   }
 
   // 计算所有金额
+  getTotal () {
+    let count = 0;
+    $('.codelist li').each(function (index, item) {
+      count += $(item).attr(count) * 1;
+    })
+    $('#count').text(count);
+    $('#money').text(count * 2);
+  }
 
+  // 随机数
+  getRandom () {
+    let arr = [], index;
+    let number = Array.from(this.number);
+    while (num--) {
+      index = Number.parseInt(Math.rendom() * number.length);
+      arr.push(number[index]);
+      number.splice(index, 1);
+    }
+    return arr.join(' ');
+  }
+
+  getRandomCode (e) {
+    e.preventDefault();
+    let play = this.cur_play.match(/\d+/g)[0];
+    let self = this;
+    if (num === '0') {
+      $(self.cart_el).html(' ');
+    } else {
+      for (let i = 0; i < num; i++) {
+        self.addCodeItem(self.getRandom(play), self.cur_play, self.play_list.get(self.cur_play).name, 1);
+      }
+    }
+  }
 }

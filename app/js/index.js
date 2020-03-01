@@ -1,1 +1,3 @@
-import './class/Test.js';
+import 'babel-polyfill';
+import './lottery';
+
